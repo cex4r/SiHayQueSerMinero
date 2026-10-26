@@ -2,22 +2,22 @@
     class Song
 {
     public string Title { get; }
-    public string Artist { get; }
-    public int? Year { get; }
+    public string[] Artist { get; }
+    public uint? Year { get; }
     public string Album { get; }
-    public string AlbumArtist { get; }
+    public string[] AlbumArtist { get; }
     public uint? Track { get; }
-    public string Genre { get; }
+    public string[] Genre { get; }
     public string Path { get; }
 
     public Song(
         string title,
-        string artist,
-        int? year,
+        string[] artist,
+        uint? year,
         string album,
-        string albumArtist,
+        string[] albumArtist,
         uint? track,
-        string genre,
+        string[] genre,
         string path)
     {
         Title = title;
