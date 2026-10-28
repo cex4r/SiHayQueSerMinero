@@ -21,10 +21,6 @@
             Console.WriteLine(cancion.Path);
         }
 
-        AddDataBase añadidor = new AddDataBase("/home/sexarprar/Uni/modelado/proyecto2/rolas.sql");
-
-        añadidor.TestConnection();
-
         
 
         
