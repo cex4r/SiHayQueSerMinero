@@ -37,9 +37,45 @@ class AddDataBase
 
     }
 
-    public long InsertAlbum(Song song, string path)
+    public long GetOrCreatePerformer(string artistSong, string dataBasePath)
     {
-        return 0; 
+        //Abrimos la conexion a la base de datos
+        using var connection = new SqliteConnection($"Data Source = {dataBasePath}"); 
+        connection.Open(); 
+
+        using var command = connection.CreateCommand();
+        //Consulatamos si existe el performer en la base de datos
+        command.CommandText = """
+        SELECT id_performer FROM performers
+        WHERE name = $name
+        LIMIT 1;
+        """;
+
+        command.Parameters.AddWithValue("$name", artistSong);
+
+        object? result = command.ExecuteScalar();
+    
+        if(result == null)
+        {
+            //El performer no se encuentra en la base de datos.
+            //Los creamos y los insertamos.
+            command.CommandText = """
+            INSERT INTO performers (id_type, name)
+            VALUES ($id_type, $nameP); 
+            """;
+            command.Parameters.AddWithValue("$id_type", 2);
+            command.Parameters.AddWithValue("$nameP", artistSong);
+
+            command.ExecuteNonQuery();
+
+            command.CommandText = """
+            SELECT last_insert_rowid();
+            """; 
+
+            result = command.ExecuteScalar();
+        }
+        
+        return (long)result; 
     }
 
 
