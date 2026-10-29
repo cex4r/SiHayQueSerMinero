@@ -10,5 +10,10 @@
 
         Console.WriteLine(p1); 
         Console.WriteLine(p2);
+
+        long p3 = añadidor.GetOrCreateAlbum("Fobia", "/home/sexarprar/Uni/modelado/proyecto2/musica.db", "/home/sexarprar/Uni/modelado/proyecto2/pruebaPathAlbum", 2000);
+        Console.WriteLine(p3);
+
+        
     }
 }
