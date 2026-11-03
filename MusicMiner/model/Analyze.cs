@@ -11,7 +11,7 @@ class Analyze
         string[] albumArtists = file.Tag.AlbumArtists;
         string[] genres = file.Tag.Genres;
         uint track = file.Tag.Track;
-
+        
         Song music = new Song(
             title,
             artists,
