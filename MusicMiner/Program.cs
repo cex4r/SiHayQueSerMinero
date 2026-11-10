@@ -1,14 +1,15 @@
-
-using Microsoft.Data.Sqlite;
-
 class Program
 {
     static void Main()
     {
-        Miner minero = new Miner(); 
+        Miner minero = new Miner();
+        Message vista = new Message();
 
-        string mensaje = minero.Mina("/home/sexarprar/Uni/modelado/proyecto2/pruebas", "/home/sexarprar/Uni/modelado/proyecto2/musica.db");
-        Console.WriteLine(mensaje); 
+        MiningResult resultado = minero.Mina(
+            "/home/sexarprar/Uni/modelado/proyecto2/pruebas",
+            "/home/sexarprar/Uni/modelado/proyecto2/musica.db"
+        );
 
+        vista.ShowResult(resultado);
     }
 }

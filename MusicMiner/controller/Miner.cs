@@ -5,66 +5,69 @@ class Miner
     private readonly Analyze analyze = new Analyze();
     private readonly AddDataBase database = new AddDataBase();
 
-    public string Mina(
+    public MiningResult Mina(
         string sourceDirectory,
         string dataBasePath)
     {
-        int processed = 0;
-        int failed = 0;
+        MiningResult result = new MiningResult();
 
         try
         {
-            // Buscamos archivos MP3.
             var paths = search.FindMp3Files(sourceDirectory);
 
             foreach (string path in paths)
             {
+                result.Found++;
+
                 try
                 {
-                    // Analizamos el archivo.
-                    Song song = analyze.ReadMeData(path);   
+                    Song song = analyze.ReadMeData(path);
 
-                    Console.WriteLine($"Title: {song.Title ?? "NULL"}");
-                    Console.WriteLine($"Album: {song.Album ?? "NULL"}");
-                    Console.WriteLine($"Year: {song.Year}");
-                    Console.WriteLine($"Track: {song.Track}");
-                    Console.WriteLine($"Genre: {string.Join(", ", song.Genre)}");
+                    // Comprobamos los metadatos obligatorios.
+                    if (string.IsNullOrWhiteSpace(song.Title) ||
+                        string.IsNullOrWhiteSpace(song.Album) ||
+                        song.Artist.Length == 0 ||
+                        string.IsNullOrWhiteSpace(song.Artist[0]))
+                    {
+                        result.Skipped++;
 
+                        result.Errors.Add(
+                            $"{Path.GetFileName(path)}: " +
+                            "Metadatos obligatorios incompletos."
+                        );
 
+                        continue;
+                    }
 
-                    // Obtenemos la carpeta del MP3.
                     string albumPath =
                         Path.GetDirectoryName(path)
                         ?? sourceDirectory;
 
-                    // Guardamos la canción.
                     database.GetOrCreateSong(
                         song,
                         dataBasePath,
                         albumPath
                     );
 
-                    processed++;
+                    result.Registered++;
                 }
                 catch (Exception ex)
                 {
-                    failed++;
+                    result.Skipped++;
 
-                    Console.Error.WriteLine(
-                    $"Error en {path}: {ex}"
+                    result.Errors.Add(
+                        $"{Path.GetFileName(path)}: {ex.Message}"
                     );
                 }
             }
-
-            return $"""
-                Minado terminado.
-                Procesadas: {processed}
-                Fallidas: {failed}
-                """;
         }
         catch (Exception ex)
         {
-            return $"Error general del minero: {ex.Message}";
+            result.Errors.Add(
+                $"Error general del minero: {ex.Message}"
+            );
         }
+
+        return result;
     }
 }
