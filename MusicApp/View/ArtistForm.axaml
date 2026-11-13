@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MusicApp.View.ArtistForm">
+  <Border Classes="card" Width="480">
+    <StackPanel Spacing="12">
+      <TextBlock x:Name="Heading" Text="Add - Artist" FontSize="18" FontWeight="Bold" />
+
+      <StackPanel x:Name="BasicPanel" Spacing="10">
+        <TextBox x:Name="NameBox" Watermark="Name" />
+        <Grid ColumnDefinitions="*,*,*">
+          <ToggleButton x:Name="PersonButton" Grid.Column="0" Classes="chip" Content="Person"
+                        HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Margin="0,0,5,0" Click="OnType" />
+          <ToggleButton x:Name="GroupButton" Grid.Column="1" Classes="chip" Content="Group"
+                        HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Margin="5,0,5,0" Click="OnType" />
+          <ToggleButton x:Name="UnknownButton" Grid.Column="2" Classes="chip" Content="Unknown"
+                        HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Margin="5,0,0,0" Click="OnType" />
+        </Grid>
+      </StackPanel>
+
+      <!-- Solo se llena cuando el tipo es Person (tabla persons). -->
+      <StackPanel x:Name="PersonPanel" Spacing="10" IsVisible="False">
+        <TextBox x:Name="StageBox" Watermark="Stage Name" />
+        <TextBox x:Name="RealBox" Watermark="Real Name" />
+        <TextBox x:Name="BirthBox" Watermark="Birth Date (yyyy-MM-dd)" />
+        <TextBox x:Name="DeathBox" Watermark="Death Date (yyyy-MM-dd)" />
+      </StackPanel>
+
+      <TextBlock x:Name="Error" Classes="error" IsVisible="False" />
+
+      <Grid>
+        <Button x:Name="DoneButton" Classes="primary" Content="Done" HorizontalAlignment="Left" Click="OnDone" />
+        <Button Classes="back" Content="Back" HorizontalAlignment="Right" Click="OnBack" />
+      </Grid>
+    </StackPanel>
+  </Border>
+</UserControl>
