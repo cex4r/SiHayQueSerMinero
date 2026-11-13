@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MusicApp.View.LibraryView">
+  <Grid RowDefinitions="Auto,*" MaxWidth="800" Margin="24,40,24,12">
+
+    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="12" Margin="0,0,0,14">
+      <Button x:Name="AddButton" Classes="pill" Content="Add" Click="OnAdd" />
+      <Button x:Name="MineButton" Classes="pill" Content="Mine" Click="OnMine" />
+      <TextBlock x:Name="MineStatus" Classes="muted" VerticalAlignment="Center" />
+    </StackPanel>
+
+    <ListBox x:Name="Songs" Grid.Row="1" Classes="rows">
+      <ListBox.ItemTemplate>
+        <DataTemplate>
+          <StackPanel Margin="8,4">
+            <TextBlock Text="{Binding Title}" FontSize="17" />
+            <TextBlock Text="{Binding Subtitle}" Classes="muted" FontSize="13" />
+          </StackPanel>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+    <TextBlock x:Name="Status" Grid.Row="1" Classes="muted" FontSize="16" HorizontalAlignment="Center"
+               VerticalAlignment="Center" TextWrapping="Wrap" />
+
+    <!-- Los formularios se muestran encima de la lista; la barra Add/Mine sigue visible como en el diseño. -->
+    <Border x:Name="OverlayLayer" Grid.Row="1" Background="#F2000000" IsVisible="False">
+      <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <ContentControl x:Name="Overlay" />
+      </ScrollViewer>
+    </Border>
+  </Grid>
+</UserControl>
