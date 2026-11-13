@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MusicApp.View.SongForm">
+  <Border Classes="card" Width="480">
+    <StackPanel Spacing="10">
+      <TextBlock x:Name="Heading" Text="Add - Song" FontSize="18" FontWeight="Bold" />
+      <TextBox x:Name="TitleBox" Watermark="Song name" />
+      <TextBox x:Name="ArtistBox" Watermark="Artist name" />
+      <TextBox x:Name="AlbumBox" Watermark="Album (optional)" />
+      <TextBox x:Name="PathBox" Watermark="Path File" />
+      <TextBox x:Name="GenreBox" Watermark="Genre" />
+      <TextBox x:Name="TrackBox" Watermark="Track" />
+      <TextBox x:Name="YearBox" Watermark="Year" />
+
+      <TextBlock x:Name="Error" Classes="error" IsVisible="False" />
+
+      <Grid Margin="0,4,0,0">
+        <Button Classes="primary" Content="Done" HorizontalAlignment="Left" Click="OnDone" />
+        <Button Classes="back" Content="Back" HorizontalAlignment="Right" Click="OnBack" />
+      </Grid>
+    </StackPanel>
+  </Border>
+</UserControl>

@@ -1,0 +1,19 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MusicApp.View.AlbumForm">
+  <Border Classes="card" Width="480">
+    <StackPanel Spacing="10">
+      <TextBlock x:Name="Heading" Text="Add - Album" FontSize="18" FontWeight="Bold" />
+      <TextBox x:Name="NameBox" Watermark="Name" />
+      <TextBox x:Name="PathBox" Watermark="Path" />
+      <TextBox x:Name="YearBox" Watermark="Year" />
+
+      <TextBlock x:Name="Error" Classes="error" IsVisible="False" />
+
+      <Grid Margin="0,4,0,0">
+        <Button Classes="primary" Content="Done" HorizontalAlignment="Left" Click="OnDone" />
+        <Button Classes="back" Content="Back" HorizontalAlignment="Right" Click="OnBack" />
+      </Grid>
+    </StackPanel>
+  </Border>
+</UserControl>
