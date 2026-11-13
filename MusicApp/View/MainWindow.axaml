@@ -1,0 +1,35 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="MusicApp.View.MainWindow"
+        Title="MusicApp"
+        Width="1100" Height="760" MinWidth="900" MinHeight="640"
+        Background="Black">
+
+  <Grid RowDefinitions="*,Auto">
+    <ContentControl x:Name="Host" Grid.Row="0" />
+
+    <Border Grid.Row="1" Background="#555555" CornerRadius="28" Height="84"
+            MaxWidth="1000" Margin="24,8,24,24" HorizontalAlignment="Stretch">
+      <Grid ColumnDefinitions="*,*,*" Margin="4">
+        <Button x:Name="SearchTab" Grid.Column="0" Classes="nav" Click="OnSearchTab">
+          <StackPanel HorizontalAlignment="Center" Spacing="4">
+            <PathIcon Width="24" Height="24" Data="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+            <TextBlock Text="Search" HorizontalAlignment="Center" FontSize="13" />
+          </StackPanel>
+        </Button>
+        <Button x:Name="HomeTab" Grid.Column="1" Classes="nav" Click="OnHomeTab">
+          <StackPanel HorizontalAlignment="Center" Spacing="4">
+            <PathIcon Width="24" Height="24" Data="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+            <TextBlock Text="Home" HorizontalAlignment="Center" FontSize="13" />
+          </StackPanel>
+        </Button>
+        <Button x:Name="LibraryTab" Grid.Column="2" Classes="nav" Click="OnLibraryTab">
+          <StackPanel HorizontalAlignment="Center" Spacing="4">
+            <PathIcon Width="24" Height="24" Data="M12 3C7.58 3 4 4.79 4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7c0-2.21-3.58-4-8-4zm0 2c3.87 0 6 1.4 6 2s-2.13 2-6 2-6-1.4-6-2 2.13-2 6-2zm6 12c0 .6-2.13 2-6 2s-6-1.4-6-2v-2.23C7.61 15.55 9.72 16 12 16s4.39-.45 6-1.23V17zm0-5c0 .6-2.13 2-6 2s-6-1.4-6-2V9.77C7.61 10.55 9.72 11 12 11s4.39-.45 6-1.23V12z" />
+            <TextBlock Text="Your Library" HorizontalAlignment="Center" FontSize="13" />
+          </StackPanel>
+        </Button>
+      </Grid>
+    </Border>
+  </Grid>
+</Window>
