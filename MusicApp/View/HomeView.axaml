@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MusicApp.View.HomeView">
+  <Grid>
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="10">
+      <PathIcon Width="150" Height="150" Foreground="#00BF63" HorizontalAlignment="Center"
+                Data="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+      <TextBlock Text="Welcome, this is your place." FontSize="48" FontWeight="Bold"
+                 HorizontalAlignment="Center" Margin="0,16,0,0" />
+      <TextBlock Text="What are you gonna do?" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" />
+      <Button Classes="pill" Content="Edit" FontSize="20" HorizontalAlignment="Center" Margin="0,24,0,0" Click="OnEdit" />
+      <Button Classes="primary" Content="Close" FontSize="20" HorizontalAlignment="Center" Click="OnClose" />
+    </StackPanel>
+
+    <Border x:Name="OverlayLayer" Background="#E6000000" IsVisible="False">
+      <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <ContentControl x:Name="Overlay" />
+      </ScrollViewer>
+    </Border>
+  </Grid>
+</UserControl>
