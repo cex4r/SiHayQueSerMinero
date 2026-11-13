@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MusicApp.View.SearchView">
+  <Grid RowDefinitions="Auto,Auto,*" MaxWidth="900" Margin="24,40,24,12">
+
+    <Grid Grid.Row="0" ColumnDefinitions="*,Auto,Auto">
+      <TextBox x:Name="Query" Grid.Column="0" Watermark="What do you want to listen to?"
+               Margin="0,0,5,0" CornerRadius="28" Padding="24,14" FontSize="16" KeyDown="OnQueryKeyDown" />
+      <ComboBox x:Name="Kind" Grid.Column="1" SelectedIndex="0" Width="120" Margin="5,0,5,0" VerticalAlignment="Stretch">
+        <ComboBoxItem Content="Song" />
+        <ComboBoxItem Content="Artist" />
+        <ComboBoxItem Content="Album" />
+      </ComboBox>
+      <Button Grid.Column="2" Margin="5,0,0,0" Classes="primary" Content="Search" VerticalAlignment="Stretch" Click="OnSearch" />
+    </Grid>
+
+    <TextBlock x:Name="Heading" Grid.Row="1" Text="Results" FontSize="22" FontWeight="Bold"
+               Margin="8,24,0,8" IsVisible="False" />
+
+    <Grid Grid.Row="2">
+      <ListBox x:Name="Results" Classes="rows">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <StackPanel Margin="8,4">
+              <TextBlock Text="{Binding Title}" FontSize="17" />
+              <TextBlock Text="{Binding Subtitle}" Classes="muted" FontSize="13" />
+            </StackPanel>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+      <TextBlock x:Name="Status" Classes="muted" FontSize="16" HorizontalAlignment="Center"
+                 VerticalAlignment="Center" TextWrapping="Wrap" />
+    </Grid>
+  </Grid>
+</UserControl>
