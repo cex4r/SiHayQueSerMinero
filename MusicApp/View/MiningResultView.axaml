@@ -1,0 +1,11 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MusicApp.View.MiningResultView">
+  <Border Classes="card" Width="480">
+    <StackPanel Spacing="12">
+      <TextBlock x:Name="Heading" FontSize="22" FontWeight="Bold" TextWrapping="Wrap" />
+      <TextBlock x:Name="Body" FontSize="15" TextWrapping="Wrap" />
+      <Button Classes="primary" Content="OK" HorizontalAlignment="Right" Click="OnClose" />
+    </StackPanel>
+  </Border>
+</UserControl>

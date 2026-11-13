@@ -1,0 +1,40 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MusicApp.View.EditView">
+  <Grid>
+    <Border x:Name="SearchCard" Classes="card" Width="480">
+      <StackPanel Spacing="12">
+        <TextBlock Text="Edit" FontSize="18" FontWeight="Bold" />
+
+        <Grid ColumnDefinitions="Auto,*,Auto">
+          <ComboBox x:Name="Kind" Grid.Column="0" SelectedIndex="0" Width="110" Margin="0,0,4,0" VerticalAlignment="Stretch">
+            <ComboBoxItem Content="Artist" />
+            <ComboBoxItem Content="Song" />
+            <ComboBoxItem Content="Album" />
+          </ComboBox>
+          <TextBox x:Name="Query" Grid.Column="1" Margin="4,0,4,0" Watermark="Search your record" KeyDown="OnQueryKeyDown" />
+          <Button Grid.Column="2" Margin="4,0,0,0" Classes="back" Content="Search" VerticalAlignment="Stretch" Click="OnSearch" />
+        </Grid>
+
+        <Grid Height="190">
+          <ListBox x:Name="Results" Classes="rows" SelectionChanged="OnSelected">
+            <ListBox.ItemTemplate>
+              <DataTemplate>
+                <StackPanel Margin="4,2">
+                  <TextBlock Text="{Binding Title}" FontSize="15" />
+                  <TextBlock Text="{Binding Subtitle}" Classes="muted" FontSize="12" />
+                </StackPanel>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+          <TextBlock x:Name="Status" Classes="muted" HorizontalAlignment="Center" VerticalAlignment="Center"
+                     TextWrapping="Wrap" Text="Busca un registro y selecciónalo para editarlo." />
+        </Grid>
+
+        <Button Classes="back" Content="Back" HorizontalAlignment="Right" Click="OnBack" />
+      </StackPanel>
+    </Border>
+
+    <ContentControl x:Name="FormHost" />
+  </Grid>
+</UserControl>
